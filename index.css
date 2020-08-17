@@ -1,0 +1,25 @@
+#app-header img {
+    width:220px;
+    height:auto;
+}
+
+.menuview {
+	overflow: hidden;
+	position: absolute;
+	left: 0px;
+	top: 150px;
+	width: 220px;
+	background-color: grey;
+	bottom: 0px;
+}
+
+.mainview {
+	position: absolute;
+	left: 220px;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	padding: 20px;
+	overflow: auto;
+	color: #88898c;
+}
