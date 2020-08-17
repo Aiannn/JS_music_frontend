@@ -1,25 +1,58 @@
 #app-header img {
-    width:220px;
-    height:auto;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+    width: 220px;
+    height: auto; 
 }
 
 .menuview {
 	overflow: hidden;
 	position: absolute;
 	left: 0px;
-	top: 150px;
+	top: 130px;
 	width: 220px;
-	background-color: grey;
+	background-color: black;
+	opacity: 0.8;
 	bottom: 0px;
 }
 
 .mainview {
 	position: absolute;
 	left: 220px;
-	top: 0px;
+	top: 100px;
 	right: 0px;
 	bottom: 0px;
 	padding: 20px;
 	overflow: auto;
 	color: #88898c;
+}
+
+.menuview div p, ul{
+	color: white;
+}
+
+.menuview div p{
+	text-align: center;
+	color: white;
+}
+
+.nav-bar {
+	position: absolute;
+	left: 220px;
+	top: 0px;
+	right: 0px;
+	height: 137.66px;
+	background-color: black;
+	opacity: 0.8;
+}
+
+#searchbar{ 
+	margin-left: 15%; 
+	padding:15px; 
+	border-radius: 10px; 
+}
+
+.mainview * {
+	color: black;
 }
