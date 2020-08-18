@@ -1,12 +1,10 @@
 //#1 
 //let num = Math.floor(Math.random()*100)
-for (let num=1; num<6; num++)
+for (let num=1; num<50; num++)
 //for (num; num<num+5; num++)
 fetch(`http://localhost:3000/artists/${num}`)
 .then(response => response.json())
-.then(artist => {
-    renderArtist(artist)
-})
+.then(artist => {renderArtist(artist)})
 
 
 //#2
@@ -18,14 +16,12 @@ function getTracks(num) {
             const artistItem = document.querySelector(`div[data-id="${num}"]`)
             const trackList = document.createElement('ul')
             trackList.innerHTML = `
-                <li>${track.title}</li>
-                <li>${track.duration}</li>
-                <li>${track.album.title}</li>
-                <li>${track.release_date}</li>
-                <li><audio id="audio" src=${track.preview} controls></li>
-                <button id="fav">To Favorite</button>
+                 <h3>Title: ${track.title}</h3> 
+                 <h4>Album: ${track.album.title}</h4>
+                <h6><audio id="audio" src=${track.preview} controls> </h6>  
+                <button id="fav"> ❤ </button>
             `
-        artistItem.append(trackList) 
+            artistItem.append(trackList) 
         })
     })
 }
@@ -37,14 +33,24 @@ function getTracks(num) {
 const artistList = document.querySelector("#songs-collection")
 function renderArtist(artist) {
     const artistItem = document.createElement('div')
+    artistItem.className = 'artist-card'
     artistItem.innerHTML = `
-        <p>${artist.name}</p>
+        <h2>${artist.name}</h2>
         <img src = ${artist.picture_medium}>
-        <button class='info'>INFO</button>
+        <br>
+        <button class='info'>Top Hits !</button>
     `
     artistItem.dataset.id = artist.id
     artistList.append(artistItem)
 }
+
+    function addFavorite(){
+        const favoritesUl = document.getElementById('playlist')
+        console.log(favoritesUl)
+
+
+
+    }
 
 
 //#3
