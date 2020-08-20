@@ -1,6 +1,6 @@
 #app-header img {
 	display: block;
-
+	position: absolute; /**/
 	margin-left: 625px;
 	margin-right: auto;
 	width:350px;
@@ -11,11 +11,7 @@
 	
 }
 
-
-
-
-
-.body{
+body{
 	height: 1000px;
 	background:linear-gradient(to top,white 0%, rgb(246, 139, 68 )100%)
 
@@ -102,17 +98,17 @@ button{
 	color: white;
 	justify-content: space-evenly;
 	}
-.menuview div p{
+/* .menuview div p{
 	position: relative;
 	text-align: center;
 	color: white;
 	padding-left: 15px;
 	padding-right: 15px;
 	top: 500px;
-}
+} */
 
 .nav-bar {
-	position:center;
+	position: absolute;
 	left: 220px;
 	top: 0px;
 	right: 0px;
@@ -123,10 +119,11 @@ button{
 }
 
 #searchbar{ 
-	position: relative;
+	/* position: relative; */
+	position: absolute;
 	margin-left: 15%; 
 	padding:15px; 
-	bottom: 300px;
+	/* bottom: 300px; */
 	right:175px;
 	border-radius: 25px; 
 	
@@ -134,4 +131,9 @@ button{
 
 .mainview * {
 	color:black;
+}
+
+audio {
+	width: 200px;
+	height: 24px;
 }
