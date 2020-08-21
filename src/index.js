@@ -1,5 +1,5 @@
 //#1 Fetching from artist show page and render the artists
-for (let num=1; num<10; num++)
+for (let num=1; num<13; num++) //12 times make request
 fetch(`http://localhost:3000/artists/${num}`)
 .then(response => response.json())
 .then(artist => {
@@ -53,7 +53,7 @@ function getTracks(num) {
 
 
 
-//#4
+//#4 Just rendering artists
 const artistList = document.querySelector("#songs-collection")
 function renderArtist(artist) {
     const artistItem = document.createElement('div')
@@ -67,15 +67,25 @@ function renderArtist(artist) {
 }
 
 
-//#5
+//#5 click -> show ; click -> hide
 document.addEventListener('click', e => {
     if (e.target.className === 'info') {
         getTracks(parseInt(e.target.parentNode.dataset.id))
-    }
+        e.target.className = 'hide'                     
+    }                                                   
+    else if (e.target.className === 'hide') {     //I think it's not good practice to remove objects and then again make request, but we're running out of time            
+        e.target.parentNode.children[3].remove()   //the reason I delete just one object is that it's not one object, when i delete an object #3 the next object becomes #3
+        e.target.parentNode.children[3].remove() 
+        e.target.parentNode.children[3].remove() 
+        e.target.parentNode.children[3].remove() 
+        e.target.parentNode.children[3].remove()               
+        e.target.className = 'info'                      
+    }                                                   
 })
 
 
-//#6 
+
+//#6 Post request to rails server, adding to favorite (at the backend it creates new song instance with body params and then creates a favorite instance and then renders this song instance as json)
 document.addEventListener('click', e => {
     if (e.target.className === "fav") {
         let body = {
@@ -107,7 +117,7 @@ document.addEventListener('click', e => {
     }
 })
 
-//#7
+//#7 delete from favorites 
 document.addEventListener('click', e => {
     if (e.target.className === 'remove-fav') {
         num = parseInt(e.target.parentNode.dataset.song_id)
@@ -118,18 +128,45 @@ document.addEventListener('click', e => {
     }
 })
 
-//# ATTEMPT TO MAKE A SEARCH BAR 
-// const searchBar = document.getElementById("searchBar")
-// searchBar.addEventListener('keyup', e => {
-//     const searchString = e.target.value 
-// })
+//#8 Search Bar directly from API 
+const searchBar = document.getElementById("searchbar")
+const searchResults = document.querySelector('#search-results')
+searchBar.addEventListener('keyup', e => {
+    const searchString = e.target.value 
+    const name = searchString
+    fetch(`https://api.deezer.com/artist/${name}`)
+    .then(response => response.json()) 
+    .then(artist => {
+        searchResults.innerHTML = `
+        <span>${artist.name}</span>
+        <img class="search-pics" src = ${artist.picture_medium}>
+        <button class='info-from-search'>Top Tracks</button>
+        `
+        searchResults.dataset.artist_id = artist.id
+    })
+})
 
-
-// fetch(`http://localhost:3000/artists/${num}`)
-
-
-
-
-
+//#9 get request to find top5 songs of specific artist and then rendering
+document.addEventListener('click', e => {
+    if (e.target.className === 'info-from-search') {
+        const num = parseInt(e.target.parentNode.dataset.artist_id)
+        fetch(`http://localhost:3000/songs/${num}`)
+        .then(response => response.json())
+        .then(tracklist => {
+            tracklist.data.forEach(track => {
+                const searchResult = document.querySelector('#search-results')
+                const tracklist = document.createElement('div')
+                tracklist.innerHTML = `
+                    <span>${track.title}</span> <span>|</span>
+                    <span>${Math.floor((track.duration)/60)}:${track.duration%60}</span> <span>|</span>
+                    <span>${track.album.title}</span> <span>|</span>
+                    <audio id="audio" src=${track.preview} controls></audio>
+                    <button class="fav">To Favorite</button>
+                `
+                searchResult.append(tracklist)
+            })
+        })
+    }
+})
 
 renderFavs()

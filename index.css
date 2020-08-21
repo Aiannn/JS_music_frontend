@@ -1,20 +1,15 @@
 #app-header img {
 	display: block;
 	position: absolute; /**/
-	margin-left: 625px;
 	margin-right: auto;
-	width:350px;
-	
-	
+	width:200px;
 	top: 0px;
- 
-	
+	left: 30px;
 }
 
 body{
 	height: 1000px;
 	background:linear-gradient(to top,white 0%, rgb(246, 139, 68 )100%)
-
 }
 
 h3{
@@ -22,22 +17,13 @@ h3{
 	font-family: Tahoma,Verdana,Segoe,sans-serif; 
 	justify-content: space-evenly;
 	text-align: center;
-
-
-
 }
-
-
-
-
-
 
 img{
 	border-style: solid;
 	border-radius: 360px;
 	border-color:white;
 	width: 200px;
-	
 }
 
 button{
@@ -46,13 +32,6 @@ button{
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 	border-radius: 12px;
 }
-
-
-
-
-
-
-
 
 .menuview {
 	overflow: hidden;
@@ -86,7 +65,7 @@ button{
 	bottom: 0px;
 	padding: 20px;
 	overflow: auto;
-	margin-top: 225px;
+	margin-top: 150px;
 
 }
 
@@ -97,15 +76,8 @@ button{
 	font-size: 15px;
 	color: white;
 	justify-content: space-evenly;
-	}
-/* .menuview div p{
-	position: relative;
-	text-align: center;
-	color: white;
-	padding-left: 15px;
-	padding-right: 15px;
-	top: 500px;
-} */
+}
+
 
 .nav-bar {
 	position: absolute;
@@ -123,9 +95,10 @@ button{
 	position: absolute;
 	margin-left: 15%; 
 	padding:15px; 
-	/* bottom: 300px; */
-	right:175px;
+	top: 30px;
+	left: -90px;
 	border-radius: 25px; 
+	width: 220px;
 	
 }
 
@@ -136,4 +109,25 @@ button{
 audio {
 	width: 200px;
 	height: 24px;
+}
+
+#search-results {
+	position: absolute; 
+	width: 600px;
+	height: 200px;
+	right: 400px;
+	top: 30px;
+}
+
+img.search-pics {
+	border-style: solid;
+	border-radius: 360px;
+	border-color:white;
+	width: 100px;
+}
+
+#search-results div {
+	position: relative;
+	left: 300px;
+	bottom: 90px;
 }
